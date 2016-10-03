@@ -1,6 +1,52 @@
 {{!-- THIS PAGE IS THE INFO THAT WILL BE PLACED IN BODY OF MAIN.HANDLEBARS --}}
 
-<h1>Day planner</h1>
+<div id='container'>
+{{!-- LIST OF ITEMS TO BE EATEN WITH A BUTTON THAT MOVES THEM TO THE RIGHT LIST --}}
+  <div id='left'>
+    <h2>Ready to Eat</h2>
+    <ol>
+      {{#each item}}
+        <li>
+        <p>
+        {{this.id}}. {{this.item}}
+        <button id='eatButton'>Eat</button>
+        </p>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
+
+  {{!-- FORM THAT ENTERS A VEGGIE AND ADDS IT TO THE 'LEFT' SECTION --}}
+  <div id='center'>
+    <h2>Enter a Veggie</h2>
+    <form method="POST" action="/create">
+      <textarea type="text" name="item"></textarea>
+      <button type="submit">Add!</button>
+    </form> 
+  </div>
+
+  {{!-- LIST OF ITEMS EATEN --}}
+  <div id='right'>
+  </div>
+    <h2>Already Eaten</h2>
+    <ol>
+      {{#each item}}
+        <li>
+        <p>
+        {{this.id}}. {{this.item}}
+        </p>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
+
+</div>
+
+
+
+{{!-- Old Code from Day Planner Exercise --}}
+
+{{!-- <h1>Eat Ur Veggies!</h1>
 
 <ul>
   {{#each plans}}
@@ -15,17 +61,17 @@
       </p>
     </li>
   {{/each}}
-</ul>
+</ul> --}}
 
-<h2>Create a Plan</h2>
+{{!-- <h2>Create a Plan</h2>
 <form method="POST" action="/create" class="button-size">
 	<textarea type="text" name="plan"></textarea>
 	<button type="submit">Save Plan!</button>
-</form>
+</form> --}}
 
-<h2>Update a Plan</h2>
+{{!-- <h2>Update a Plan</h2>
 <form action="/update?_method=PUT" method="POST" class="button-size">
   <input type="text" name="id" placeholder="id">
 	<textarea type="text" name="plan" placeholder="plan"></textarea>
 	<button type="submit">Update Plan!</button>
-</form>
+</form> --}}
